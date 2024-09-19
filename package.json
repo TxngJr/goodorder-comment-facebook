@@ -1,0 +1,115 @@
+{
+  "name": "goodorder-dashboard",
+  "homepage": "/",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@ant-design/pro-components": "^2.6.48",
+    "@ant-design/pro-layout": "^7.17.16",
+    "@casl/ability": "^6.5.0",
+    "@casl/react": "^3.1.0",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/interaction": "^6.1.11",
+    "@fullcalendar/list": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11",
+    "@fullcalendar/timegrid": "^6.1.11",
+    "@fullcalendar/timeline": "^6.1.11",
+    "@mui/icons-material": "^5.15.8",
+    "@mui/material": "^5.15.6",
+    "@mui/styled-engine-sc": "6.0.0-alpha.12",
+    "@mui/x-charts": "^7.3.1",
+    "@mui/x-date-pickers": "^6.19.3",
+    "@react-pdf/renderer": "3.1.9",
+    "@reduxjs/toolkit": "^2.2.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.69",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "antd": "^5.12.8",
+    "apexcharts": "^3.49.0",
+    "axios": "^1.6.5",
+    "beautiful-react-hooks": "^5.0.1",
+    "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.10",
+    "feather-icons-react": "^0.7.0",
+    "formik": "^2.4.5",
+    "jsbarcode": "^3.11.6",
+    "lodash": "^4.17.21",
+    "numeral": "^2.0.6",
+    "pdf-lib": "^1.17.1",
+    "pusher-js": "^8.4.0-rc2",
+    "query-string": "^8.1.0",
+    "radash": "^11.0.0",
+    "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha-v3": "^1.10.1",
+    "react-icons": "^5.1.0",
+    "react-infinite-scroller": "^1.2.6",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.10.3",
+    "store2": "^2.14.2",
+    "styled-components": "^6.1.6",
+    "styled-components.macro": "^1.0.0",
+    "styled-system": "^5.1.5",
+    "swr": "^2.2.4",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5",
+    "yup": "^1.3.3"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/lodash": "^4.14.202",
+    "@types/numeral": "^2.0.5",
+    "@types/react-infinite-scroller": "^1.2.5",
+    "@types/styled-system": "^5.1.22",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.3",
+    "typescript": "^5.1.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "pnpm": {
+    "overrides": {
+      "@react-pdf/image": "2.2.3",
+      "@react-pdf/pdfkit": "3.0.4"
+    }
+  }
+}

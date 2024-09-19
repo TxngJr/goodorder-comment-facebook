@@ -1,0 +1,152 @@
+@import "antd/dist/reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Anuphan', 'Roboto', sans-serif !important;
+  margin: 0;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+
+.ant-menu-dark,
+.ant-layout-sider {
+  background-color: #1c2536 !important;
+}
+
+.ant-menu-item-selected {
+  background-color: transparent !important;
+}
+
+.ant-menu-item-selected svg {
+  color: #16b364 !important;
+}
+
+@media (min-width: 1200px) {
+  .ant-menu-item .ant-menu-item-icon svg {
+    font-size: 22px !important;
+  }
+
+  .ant-layout-sider-collapsed .ant-menu-item-group-title {
+    display: none;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+}
+
+.custom-input-file {
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.custom-input-file::before {
+  text-transform: uppercase;
+  content: attr(data-label);
+}
+
+.custom-input-file {
+  position: relative;
+  padding: 5px;
+  border: 1px solid #e7e2e2;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.custom-input-file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-input-file::before {
+  content: 'Select files';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 3px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  /*width: 100%;*/
+}
+
+.custom-input-file:hover::before {
+  border-color: black;
+}
+
+.custom-input-file:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.css-19kzrtu {
+  padding: 0px !important;
+}
+
+
+.ant-table-tbody > tr > td:not(:last-child) {
+  border-inline-end: none !important;
+}
+
+.shipment-logo img {
+  border-radius: 10px;
+  width: 110px;
+  overflow: hidden;
+}
+
+/* General scrollbar styles for WebKit browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height of the scrollbar for horizontal scrolling */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #0A1525; /* Color of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid #0A1525; /* Border around the thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Change color on hover */
+}
+
+/* Styles for Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin; /* Thin scrollbar for Firefox */
+  scrollbar-color: #888 #0A1525; /* Thumb and track colors */
+}
+
+.custom-scrollbar::-moz-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-moz-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Additional styles for hover effect */
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+
+/* Hide scrollbar for touch devices */
+@media (pointer: coarse) {
+  .custom-scrollbar {
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none; /* WebKit */
+  }
+}
