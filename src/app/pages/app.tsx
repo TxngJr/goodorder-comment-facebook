@@ -19,6 +19,7 @@ import { store } from '../../store'
 import { useEffect } from 'react'
 
 import PhoneNumberRetrievalSystemPage from './PhoneNumberRetrievalSystem'
+import CustomerMessagingSystem from './CustomerMessagingSystem'
 
 dayjs.extend(utc)
 dayjs.extend(weekday)
@@ -58,6 +59,7 @@ const App = () => {
                   index element={<div>Home</div>}
                 />
                 <Route path="phone-number-retrieval/*" element={<PhoneNumberRetrievalSystemPage />} />
+                <Route path="customer-messaging/*" element={<CustomerMessagingSystem />} />
                     {/* <Route path="users/*" element={<UsersPage />} />
                     <Route path="merchants/*" element={<MerchantPage />} />
                     <Route path="stock/*" element={<StockPage />} />

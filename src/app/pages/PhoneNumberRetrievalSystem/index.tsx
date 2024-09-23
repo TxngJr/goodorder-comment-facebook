@@ -18,6 +18,7 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
   const [minValue, setMinValue] = useState<number>(0)
   const [maxValue, setMaxValue] = useState<number>(0)
   const [isRunning, setIsRunning] = useState<boolean>(false)
+  const [count, setCount] = useState<number>(0)
 
   const handleDeleteListByIndex = (index: number) => {
     const newList = list.filter((_, i) => i !== index)
@@ -42,7 +43,7 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
 
   return (
     <ContentWrapper>
-      <Helmet title="รายการสินค้า" />
+      <Helmet title="ระบบดึงเบอร์โทรจากคนคอมเม้นแฟนเพจ" />
       <HeaderContent
         goBack
         title="ระบบดึงเบอร์โทรจากคนคอมเม้นแฟนเพจ"
@@ -78,7 +79,10 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
                   size="large"
                   startIcon={isRunning ? <StopCircleOutlinedIcon /> : <PlayCircleOutlineIcon />}
                   sx={{ height: '100%' }}
-                  onClick={() => setIsRunning(!isRunning)}
+                  onClick={() => {
+                    setIsRunning(!isRunning)
+                    setCount(isRunning ? 0 : 10)
+                  }}
                 >
                   {isRunning ?
                     "หยุดดึงเบอร์โทร"
@@ -87,20 +91,22 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} lg={12} alignItems={'center'} justifyContent={'center'} display={'flex'}>
-            <Typography variant="h6" color="textPrimary" sx={{ marginRight: 2 }}>
-              จำนวนเบอร์โทรที่ดึงได้: 0 รายการ
-            </Typography>
-            <Button
-              color="info"
-              variant="contained"
-              size="large"
-              sx={{ height: '100%' }}
-              startIcon={<DownloadForOfflineOutlinedIcon />}
-            >
-              ดาวน์โหลดไฟล์
-            </Button>
-          </Grid>
+          {count > 0 &&
+            <Grid item xs={12} lg={12} alignItems={'center'} justifyContent={'center'} display={'flex'}>
+              <Typography variant="h6" color="textPrimary" sx={{ marginRight: 2 }}>
+                จำนวนเบอร์โทรที่ดึงได้: {count} รายการ
+              </Typography>
+              <Button
+                color="info"
+                variant="contained"
+                size="large"
+                sx={{ height: '100%' }}
+                startIcon={<DownloadForOfflineOutlinedIcon />}
+              >
+                ดาวน์โหลดไฟล์
+              </Button>
+            </Grid>
+          }
           <Grid item xs={12} lg={12}>
             <Typography variant="h6" color="textSecondary">
               รายการ ID แฟนเพจ โปรไฟล์ กลุ่ม 1
@@ -121,6 +127,7 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
                   required={list.length !== index + 1}
                   id={data}
                   name={data}
+                  disabled={isRunning}
                   fullWidth
                   label={'ID แฟนเพจ โปรไฟล์ กลุ่ม 1'}
                   value={data}
@@ -130,7 +137,7 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
                     )
                   }
                 />
-                {list.length !== index + 1 &&
+                {list.length !== index + 1 && !isRunning &&
                   <IconButton
                     onClick={() =>
                       handleDeleteListByIndex(index)

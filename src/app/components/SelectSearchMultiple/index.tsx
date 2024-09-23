@@ -5,7 +5,6 @@ interface Props<T> {
   resetAutoComplete?: string;
   label: string;
   placeholder?: string;
-  value?: IOptionSelect<T>;
   onSelect: (value: IOptionSelect<T>[] | null) => void;
   search: string;
   onSearch: (value: string) => void;
