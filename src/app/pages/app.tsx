@@ -18,6 +18,8 @@ import themeConfig from '../themes'
 import { store } from '../../store'
 import { useEffect } from 'react'
 
+import PhoneNumberRetrievalSystemPage from './PhoneNumberRetrievalSystem'
+
 dayjs.extend(utc)
 dayjs.extend(weekday)
 dayjs.extend(buddhistEra)
@@ -55,8 +57,8 @@ const App = () => {
                 <Route
                   index element={<div>Home</div>}
                 />
-                {/* <Route index element={<DashboardPage />} />
-                    <Route path="users/*" element={<UsersPage />} />
+                <Route path="phone-number-retrieval/*" element={<PhoneNumberRetrievalSystemPage />} />
+                    {/* <Route path="users/*" element={<UsersPage />} />
                     <Route path="merchants/*" element={<MerchantPage />} />
                     <Route path="stock/*" element={<StockPage />} />
                     <Route path="reports/*" element={<ReportsPage />} />
