@@ -6,7 +6,7 @@ import DownloadForOfflineOutlinedIcon from '@mui/icons-material/DownloadForOffli
 
 import { ContentWrapper } from '../../components/ContentWrapper'
 import Helmet from '../../components/Helmet'
-import { Button, Card, Grid, IconButton, TextField, Typography } from '@mui/material'
+import { Button, Card, Grid, IconButton, TextField, Typography, useMediaQuery } from '@mui/material'
 import HeaderContent from '../../components/Layouts/HeaderContent'
 import { MaxValueField, MinValueField } from '../../components/MinMaxInput';
 import ProgressBarWithPercent from '../../components/BorderLinearProgress';
@@ -14,32 +14,12 @@ import ProgressBarWithPercent from '../../components/BorderLinearProgress';
 type Props = {}
 
 const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
-  const [list, setList] = useState<string[]>([""])
+  const isMobile = useMediaQuery('(max-width:600px)')
   const [minValue, setMinValue] = useState<number>(0)
+  const [message, setMessage] = useState<string>("")
   const [maxValue, setMaxValue] = useState<number>(0)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [count, setCount] = useState<number>(0)
-
-  const handleDeleteListByIndex = (index: number) => {
-    const newList = list.filter((_, i) => i !== index)
-    setList(newList)
-  }
-
-  const changeValueByIndexList = (index: number, value: string) => {
-    const newList = list.map((item, i) => {
-      if (i === index) {
-        return value
-      }
-      return item
-    }).filter(
-      (value) => value !== ""
-    )
-
-    if (newList[newList.length - 1] !== "") {
-      newList.push("")
-    }
-    setList(newList)
-  }
 
   return (
     <ContentWrapper>
@@ -52,31 +32,32 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
       <Card
         sx={{
           padding: 2,
-          height: "75vh"
+          height: "75vh",
         }}
       >
         <Grid container spacing={2} mt={1} alignItems={'center'} justifyContent={'center'}>
           <Grid item xs={12} lg={12}>
-            <Grid container spacing={2} xs={12} lg={12} justifyContent={'flex-end'} alignItems={'center'}>
+            <Grid container spacing={2} justifyContent={isMobile ? "center" : 'flex-end'} alignItems={'center'}>
               {isRunning ?
                 <Grid item xs={10} lg={10}>
                   <ProgressBarWithPercent value={50} />
                 </Grid>
                 :
                 <>
-                  <Grid item xs={1} lg={1}>
+                  <Grid item xs={6} lg={2}>
                     <MinValueField minValue={minValue} setMinValue={setMinValue} />
                   </Grid>
-                  <Grid item xs={1} lg={1}>
+                  <Grid item xs={6} lg={2}>
                     <MaxValueField minValue={minValue} maxValue={maxValue} setMaxValue={setMaxValue} />
                   </Grid>
                 </>
               }
-              <Grid item xs={2} lg={2}>
+              <Grid item xs={12} lg={2}>
                 <Button
                   color={isRunning ? "error" : "primary"}
                   variant="contained"
                   size="large"
+                  fullWidth
                   startIcon={isRunning ? <StopCircleOutlinedIcon /> : <PlayCircleOutlineIcon />}
                   sx={{ height: '100%' }}
                   onClick={() => {
@@ -93,62 +74,46 @@ const PhoneNumberRetrievalSystem: React.FC<Props> = () => {
           </Grid>
           {count > 0 &&
             <Grid item xs={12} lg={12} alignItems={'center'} justifyContent={'center'} display={'flex'}>
-              <Typography variant="h6" color="textPrimary" sx={{ marginRight: 2 }}>
-                จำนวนเบอร์โทรที่ดึงได้: {count} รายการ
-              </Typography>
-              <Button
-                color="info"
-                variant="contained"
-                size="large"
-                sx={{ height: '100%' }}
-                startIcon={<DownloadForOfflineOutlinedIcon />}
-              >
-                ดาวน์โหลดไฟล์
-              </Button>
+              <Grid container spacing={2} justifyContent={'center'} alignItems={'center'}>
+                <Grid item xs={12} lg={3}>
+                  <Typography variant="h6" color="textPrimary" sx={{ marginRight: 2 }}>
+                    จำนวนเบอร์โทรที่ดึงได้: {count} รายการ
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} lg={2}>
+                  <Button
+                    color="info"
+                    variant="contained"
+                    size="large"
+                    fullWidth
+                    sx={{ height: '100%' }}
+                    startIcon={<DownloadForOfflineOutlinedIcon />}
+                  >
+                    ดาวน์โหลดไฟล์
+                  </Button>
+                </Grid>
+              </Grid>
             </Grid>
           }
           <Grid item xs={12} lg={12}>
             <Typography variant="h6" color="textSecondary">
-              รายการ ID แฟนเพจ โปรไฟล์ กลุ่ม 1
+              ใส่ ID หรือลิ้ง แฟนเพจ โปรไฟล์ หรือ กลุ่ม ถ้าเป็นโพสให้คลิกขวาที่เวลาของโพสแล้วcopy มาวางเลย 1 บรรทัดต่อ 1 ลิ้งหรือid
             </Typography>
           </Grid>
-          {list.map((data, index: number) => {
-            return (
-              <Grid item
-                key={index}
-                xs={12}
-                lg={12}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <TextField
-                  required={list.length !== index + 1}
-                  id={data}
-                  name={data}
-                  disabled={isRunning}
-                  fullWidth
-                  label={'ID แฟนเพจ โปรไฟล์ กลุ่ม 1'}
-                  value={data}
-                  onChange={(e) =>
-                    changeValueByIndexList(index,
-                      e.target.value,
-                    )
-                  }
-                />
-                {list.length !== index + 1 && !isRunning &&
-                  <IconButton
-                    onClick={() =>
-                      handleDeleteListByIndex(index)
-                    }
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                }
-              </Grid>
-            )
-          })}
+          <Grid item xs={12} lg={12}>
+            <TextField
+              required={true}
+              id={'message'}
+              name={'message'}
+              disabled={isRunning}
+              multiline
+              rows={10}
+              fullWidth
+              label={'ใส่ ID แฟนเพจ โปรไฟล์ กลุ่ม 1 บรรทัดต่อ 1 ID'}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+          </Grid>
         </Grid>
       </Card>
     </ContentWrapper>

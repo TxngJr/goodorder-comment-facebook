@@ -20,6 +20,7 @@ import { useEffect } from 'react'
 
 import PhoneNumberRetrievalSystemPage from './PhoneNumberRetrievalSystem'
 import CustomerMessagingSystem from './CustomerMessagingSystem'
+import AutoCommentSystemPage from './AutoCommentSystem'
 
 dayjs.extend(utc)
 dayjs.extend(weekday)
@@ -60,13 +61,7 @@ const App = () => {
                 />
                 <Route path="phone-number-retrieval/*" element={<PhoneNumberRetrievalSystemPage />} />
                 <Route path="customer-messaging/*" element={<CustomerMessagingSystem />} />
-                    {/* <Route path="users/*" element={<UsersPage />} />
-                    <Route path="merchants/*" element={<MerchantPage />} />
-                    <Route path="stock/*" element={<StockPage />} />
-                    <Route path="reports/*" element={<ReportsPage />} />
-                    <Route path="setting/*" element={<SettingPage />} />
-                    <Route path="orders/*" element={<OrdersPage />} />
-                    <Route path="customers/*" element={<CustomersPage />} /> */}
+                <Route path='auto-comment-system/*' element={<AutoCommentSystemPage />}/>
               </Routes>
             </DefaultLayout>
           </GoogleReCaptchaProvider>

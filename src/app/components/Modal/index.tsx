@@ -21,7 +21,7 @@ const Modal: React.FC = () => {
                     open={true}
                     onClose={() => dispatch(closeModal(modal.id))}
                     fullWidth
-                    maxWidth="sm"
+                    maxWidth="xl"
                 >
                     <DialogContent onClick={(e) => e.stopPropagation()}>
                         {modal.content}
